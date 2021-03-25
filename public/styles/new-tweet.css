@@ -21,3 +21,11 @@
   color: #fff;
   background-color: #4056A1;
 }
+
+.new-tweet output {
+  color: #545149;
+}
+
+.new-tweet output.on {
+  color: #f00;
+}
