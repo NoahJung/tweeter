@@ -12,7 +12,7 @@ $(document).ready(function() {
       $(this).next().children("output").removeClass("on");
     }
 
-    });
+  });
 
   
 });
