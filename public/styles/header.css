@@ -1,7 +1,7 @@
-header {
+header.topHeader {
   height: 400px;
   width: 100%;
-  background-color: #cf5b9d;
+  background-color: #e09bbd;
   background-image: url("../images/45-degree-fabric-light.png");
 }
 

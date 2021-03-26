@@ -10,11 +10,12 @@
   border-bottom: 3px solid #545149;
 }
 
-.new-tweet form div {
+.new-tweet div {
   display: flex;
   justify-content: space-between;
   font-family: font-family:'Bungee', sans-serif;
   margin: 1rem auto;
+  font-family:'Bungee', sans-serif;
 }
 
 .new-tweet button {
@@ -29,3 +30,4 @@
 .new-tweet output.on {
   color: #f00;
 }
+
