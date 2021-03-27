@@ -7,6 +7,12 @@
 
 $(document).ready(function() {
 
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
   const renderTweets = function(tweets) {
 
     for (const item of tweets) {
@@ -25,21 +31,26 @@ $(document).ready(function() {
           </div>
           <span class="userID">${tweet.user.handle}</span>
         </header>
-        <p>${tweet.content.text}</p>
+        <p>${escape(tweet.content.text)}</p>
         <footer>
           <span>OOdays ago</span>
           <span>icons</span>
         </footer>
       </article>
     </a>`
+    
     return $tweet;
   }
 
   const loadTweets = function() {
-    $.ajax('/tweets', { method: 'GET' })
-    .then(function (data) {
+    // $.ajax('/tweets', { method: 'GET' })
+    // .then(function() {
+    //   renderTweets(data);
+    // });
+    $.getJSON( "/tweets", function(data){
       renderTweets(data);
     });
+
   }
 
   loadTweets();
@@ -47,24 +58,23 @@ $(document).ready(function() {
   $("form").on( "submit", function( event ) {
     event.preventDefault();
 
-    const sendData = {
-        name : $(".topHeader .name h2").html(),
-        avatars : $(".topHeader img").attr("src"),
-        text : $("textarea").val()
-    };
-    //console.log($(sendData).serialize());
+    const text = $('textarea').val();
+    const errAlert = $('.errorM');
+    errAlert.css("display","none");
    
-    if (sendData.text === "") {
-      alert("Please write something to tweet!")
-    } else if (sendData.text.length > 140) {
-      alert("Your tweet exceeds the 140 character limit")
+    if (text.length === 0 || !text.trim()) {
+      errAlert.text("Please write something to tweet!")
+              .css("display","block").hide().slideDown();
+    } else if (text.length > 140) {
+      errAlert.text("Your tweet exceeds the 140 character limit")
+              .css("display","block").hide().slideDown();
     } else {
       $.ajax({
         url: '/tweets',
         dataType: 'text',
         method: 'post',
         contentType: 'application/x-www-form-urlencoded',
-        data: sendData
+        data: $(this).serialize()
       }).then(function(){
         loadTweets();
         $("textarea").val('');

@@ -1,5 +1,6 @@
 article.tweet {
   padding: .5em;
+  margin: .5em;
   border: 3px solid #666;
   font-weight: 300;
 }
