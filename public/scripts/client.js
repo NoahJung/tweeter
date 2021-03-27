@@ -8,9 +8,9 @@
 $(document).ready(function() {
 
   const renderTweets = function(tweets) {
-    
+
     for (const item of tweets) {
-      $('#all-tweets').append(createTweetElement(item));
+      $('#all-tweets').prepend(createTweetElement(item));
     }
 
   }
@@ -67,6 +67,7 @@ $(document).ready(function() {
         data: sendData
       }).then(function(){
         loadTweets();
+        $("textarea").val('');
       })
     }
 
