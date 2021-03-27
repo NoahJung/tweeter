@@ -38,7 +38,6 @@ $(document).ready(function() {
   const loadTweets = function() {
     $.ajax('/tweets', { method: 'GET' })
     .then(function (data) {
-      console.log(data);
       renderTweets(data);
     });
   }
@@ -47,12 +46,31 @@ $(document).ready(function() {
 
   $("form").on( "submit", function( event ) {
     event.preventDefault();
-    const result = $(this).serialize();
-    console.log(result);
-    console.log(typeof result);
-    return result["text"];
-  });
 
+    const sendData = {
+        name : $(".topHeader .name h2").html(),
+        avatars : $(".topHeader img").attr("src"),
+        text : $("textarea").val()
+    };
+    //console.log($(sendData).serialize());
+   
+    if (sendData.text === "") {
+      alert("Please write something to tweet!")
+    } else if (sendData.text.length > 140) {
+      alert("Your tweet exceeds the 140 character limit")
+    } else {
+      $.ajax({
+        url: '/tweets',
+        dataType: 'text',
+        method: 'post',
+        contentType: 'application/x-www-form-urlencoded',
+        data: sendData
+      }).then(function(){
+        loadTweets();
+      })
+    }
+
+  });
   
 
 });
