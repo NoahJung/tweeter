@@ -82,6 +82,12 @@ $(document).ready(function() {
     }
 
   });
+
+  $(".composeBT").on( "click", function( event ){
+    event.preventDefault();
+
+    $(".new-tweet").css("display","block");
+  });
   
 
 });
