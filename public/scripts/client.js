@@ -78,6 +78,7 @@ $(document).ready(function() {
       }).then(function(){
         loadTweets();
         $("textarea").val('');
+        $("output").text("140");
       })
     }
 
