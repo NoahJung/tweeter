@@ -88,6 +88,7 @@ $(document).ready(function() {
     event.preventDefault();
 
     $(".new-tweet").css("display","block");
+    $('textarea').focus();
   });
   
 
