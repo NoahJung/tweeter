@@ -1,20 +1,45 @@
-header.topHeader {
-  margin-top: 120px;
-  height: 400px;
-  width: 100%;
-  background-color: #e09bbd;
-  background-image: url("../images/45-degree-fabric-light.png");
+
+  header.topHeader {
+    margin-top: 120px;
+    background-color: #e09bbd;
+    background-image: url("../images/45-degree-fabric-light.png");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 400px;
+  }
+
+  header.topHeader div{
+    width: 100%;
+    display: flex;
+  }
+
+  .avatar {
+    width: 256px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .name {
+    justify-content: center;
+  }
+
+@media only screen and (max-width: 1023px) {
+
+  header.topHeader {
+    width: 100%;
+  }
+
 }
 
-header div {
-  display: flex;
-}
+@media only screen and (min-width: 1024px) {
 
-.avatar {
-  justify-content: center;
-  align-items: center;
-}
+  header.topHeader {
+    margin-top: 200px;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 400px;
+    
+  }
 
-.name {
-  justify-content: center;
 }
