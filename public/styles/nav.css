@@ -13,12 +13,11 @@ nav {
 
 nav .logo {
   font-family:'Bungee', sans-serif;
-  padding-top: 10px;
 }
 
-nav .composeBT {
+nav a.composeBT, nav a.composeBT:hover, nav a.composeBT:active {
   background-color: #4056A1;
   border: none;
   color: #ffffff;
-  
+  text-decoration: none;
 }
